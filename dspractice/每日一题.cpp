@@ -146,4 +146,79 @@ LinkList ReverseLinkList_tri(LinkList &L) {
 // 找 min < x < max
 // 删除
 
-void DeleteAB()
+void DeleteBetweenMinMax(LinkList &L, int min, int max) {
+    LNode *pre = L;
+    LNode *p = L->next;
+    while (p != NULL) {
+        if (min < p->data && p->data < max) {
+            pre->next = p->next;
+            free(p);
+            p = pre->next;
+        }
+        else {
+            pre = p;
+            p = p->next;
+        }
+    }
+}
+
+// 2025.5.13 (1)
+// 给定两个带头结点的单链表，寻找两个链表的公共结点
+// 1. 暴力解法
+// 使用两次循环，指针 p，q 分别指向链表 1 与 2
+
+LNode* FindPublicNode(LinkList L1, LinkList L2) {
+    LNode *p = L1->next;
+    LNode *q = L2->next;
+
+    while (p != NULL) {
+        while (q != NULL) {
+            if (p == q) {
+                return q;
+            }
+            q = q->next;
+        }
+        p = p->next;
+        q = L2->next;
+    }
+
+    return NULL;
+}
+
+int GetLength(LinkList L) {
+    int len = 0;
+    while (L != NULL) {
+        len++;
+        L = L->next;
+    }
+    return len;
+}
+
+LNode* FindPublicNode2(LinkList L1, LinkList L2) {
+    LNode* p = L1->next;
+    LNode* q = L2->next;
+    int L1length = GetLength(L1);
+    int L2length = GetLength(L2);
+
+    int offset = abs(L1length - L2length);
+
+    if (L1length <= L2length) {
+        for (int i = 0; i < offset; i++) {
+            q = q->next;
+        }
+    }
+    else if (L1length > L2length){
+        for (int i = 0; i < offset; i++) {
+            p = p->next;
+        }
+    }
+
+    while (p != NULL && q != NULL) {
+        if (p == q) {
+            return p;
+        }
+        p = p->next;
+        q = q->next;
+    }
+    return NULL;
+}
