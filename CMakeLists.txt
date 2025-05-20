@@ -32,4 +32,6 @@ add_executable(408DataStructure
         "dstemplete/7.2.3 分块查找.cpp"
         dspractice/每日一题.cpp
         test.cpp
-        "dstemplete/7.3.3 红黑树.cpp")
+        "dstemplete/7.3.3 红黑树.cpp"
+        "dstemplete/7.4.2 B+树.cpp"
+        "dstemplete/7.5.3 散列表处理冲突的方法.cpp")
