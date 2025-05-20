@@ -1,7 +1,10 @@
 cmake_minimum_required(VERSION 3.31)
 project(408DataStructure)
 
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_C_COMPILER gcc)
+set(CMAKE_CXX_COMPILER g++)
 
 add_executable(408DataStructure
         "dstemplete/3.2.2 链队列.cpp"

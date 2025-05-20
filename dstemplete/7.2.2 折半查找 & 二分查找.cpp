@@ -12,7 +12,8 @@
     // 重复执行操作
     // 直到 low = high = (low+high) / 2 = 元素，则查找成功。
     // 直到 low = high = (low+high) / 2 != 元素，则再进行一步后，low > high，说明查找失败。
-
+#include <bits/stdc++.h>
+using namespace std;
 typedef int ElemType;
 
 typedef struct {
@@ -41,6 +42,7 @@ int Binary_Search(SSTable L, ElemType key) {
     return -1;
 }
 
+
 // 链表没有随机存取的特性，无法使用折半查找。
 
 // 折半查找判定树的构造
@@ -53,3 +55,28 @@ int Binary_Search(SSTable L, ElemType key) {
     // 失败节点的数量 = 成功节点的空链域数量 = n+1
 
 // 时间复杂度为 O(log(n)) 或 O(log^2(n))
+
+int main() {
+    int n;
+    std::cout << "请输入顺序表元素个数：";
+    std::cin >> n;
+    SSTable table;
+    table.TableLen = n;
+    table.elem = new ElemType[n];
+    std::cout << "请输入" << n << "个升序元素：";
+    for (int i = 0; i < n; ++i) {
+        std::cin >> table.elem[i];
+    }
+    ElemType key;
+    std::cout << "请输入要查找的元素：";
+    std::cin >> key;
+    int pos = Binary_Search(table, key);
+    if (pos != -1) {
+        std::cout << "查找成功，位置为：" << pos << std::endl;
+    } else {
+        std::cout << "查找失败，元素不存在。" << std::endl;
+    }
+    delete[] table.elem;
+    return 0;
+}
+

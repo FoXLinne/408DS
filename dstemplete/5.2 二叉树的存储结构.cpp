@@ -17,7 +17,7 @@ for(int i = 0; i < MAXSIZE; i++){
 //二叉树的链式存储结构
 struct ElemType{
     int value;
-}
+};
 
 typedef struct BiTNode
 {
