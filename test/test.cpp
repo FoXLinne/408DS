@@ -8,4 +8,5 @@ void printVersion() {
 int main() {
     printVersion();
     return 0;
+
 }
